@@ -23,12 +23,10 @@ public class FirstSaProjectApplication implements CommandLineRunner {
 
 	public  void run(String... args) throws Exception{
 		Book book = new Book();
-		book.setAuthor("Jon Scott");
-		book.setDescription("A book on C#");
+		book.setAuthor("Jon Skeet");
 		book.setIsbn("111-1111-11111");
-		book.setTitle("C# in Action");
+		book.setTitle("C# in Depth");
+		book.setPrice(56.60);
 		bookService.addBook(book);
-		book.setTitle("Segun Oladapo");
-		bookRepository.save(book);
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -14,18 +15,18 @@ public class BookService {
     private BookRepository bookRepository;
 
     public void addBook(Book book){
-        bookRepository.insert(book);
+        bookRepository.save(book);
     }
 
     public void deleteBook(String isbn){
-
+        bookRepository.deleteByIsbn(isbn);
     }
 
     public Book getBook(String isbn){
-        return null;
+        return bookRepository.findByIsbn(isbn);
     }
 
     public List<Book> getAllBooks(){
-        return null;
+        return bookRepository.findAll();
     }
 }
