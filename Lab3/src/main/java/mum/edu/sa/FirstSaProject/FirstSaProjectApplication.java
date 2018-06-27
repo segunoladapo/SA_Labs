@@ -27,6 +27,13 @@ public class FirstSaProjectApplication implements CommandLineRunner {
 		book.setIsbn("111-1111-11111");
 		book.setTitle("C# in Depth");
 		book.setPrice(56.60);
+
+		Book book2 = new Book();
+		book2.setAuthor("Karthy Sierra & Bert Bates");
+		book2.setIsbn("222-2222-2222");
+		book2.setTitle("Head First Java");
+		book2.setPrice(56.60);
 		bookService.addBook(book);
+		bookService.addBook(book2);
 	}
 }
