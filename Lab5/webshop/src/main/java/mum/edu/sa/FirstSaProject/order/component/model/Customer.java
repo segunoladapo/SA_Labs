@@ -1,30 +1,17 @@
-package mum.edu.sa.FirstSaProject.membership.component.model;
+package mum.edu.sa.FirstSaProject.order.component.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-@Document(collection = "customers")
 public class Customer {
-    @Id
     private long id;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
-    private Account account;
     private Address address;
-    private List<CreditCard> creditCards;
 
-    public Customer(){
-        creditCards = new ArrayList<>();
+    public Customer() {
     }
 
-    public void addCreditCard(CreditCard creditCard){
-        this.creditCards.add(creditCard);
-    }
 
     public long getId() {
         return id;
@@ -66,14 +53,6 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     public Address getAddress() {
         return address;
     }
@@ -81,9 +60,4 @@ public class Customer {
     public void setAddress(Address address) {
         this.address = address;
     }
-
-    public List<CreditCard> getCreditCards() {
-        return Collections.unmodifiableList(creditCards);
-    }
-
 }

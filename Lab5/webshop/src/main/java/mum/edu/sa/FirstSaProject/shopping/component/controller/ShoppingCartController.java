@@ -1,8 +1,8 @@
 package mum.edu.sa.FirstSaProject.shopping.component.controller;
 
-import mum.edu.sa.FirstSaProject.model.OrderLine;
-import mum.edu.sa.FirstSaProject.model.ShoppingCart;
-import mum.edu.sa.FirstSaProject.service.ShoppingCartService;
+import mum.edu.sa.FirstSaProject.shopping.component.model.*;
+import mum.edu.sa.FirstSaProject.shopping.component.model.ShoppingCart;
+import mum.edu.sa.FirstSaProject.shopping.component.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class ShoppingCartController {
 
 
     @PostMapping("/{id}")
-    public ResponseEntity startShoppingCart(@PathVariable("id") long id) {
+    public ResponseEntity createShoppingCart(@PathVariable("id") long id) {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setId(id);
         shoppingCartService.createShoppingCart(shoppingCart);
@@ -31,7 +31,7 @@ public class ShoppingCartController {
     public ResponseEntity addToShoppingCart(@PathVariable("id") long id, @PathVariable("productId") long productId,
                                             @PathVariable("quantity") int quantity) {
 
-        Product product = productCatalogService.getProduct(productId);
+        Product product = shoppingCartService.getProductById(productId);
         OrderLine orderLine = new OrderLine();
         orderLine.setProduct(product);
         orderLine.setQuantity(quantity);

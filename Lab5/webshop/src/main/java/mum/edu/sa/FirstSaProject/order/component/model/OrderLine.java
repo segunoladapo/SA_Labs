@@ -1,8 +1,6 @@
-package mum.edu.sa.FirstSaProject.model;
+package mum.edu.sa.FirstSaProject.order.component.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "orderlines")
 public class OrderLine {
     private Product product;
     private int quantity;

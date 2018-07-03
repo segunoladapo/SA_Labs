@@ -1,11 +1,16 @@
 package mum.edu.sa.FirstSaProject.shopping.component.service;
 
-import mum.edu.sa.FirstSaProject.dao.ShoppingCartRepository;
-import mum.edu.sa.FirstSaProject.model.OrderLine;
-import mum.edu.sa.FirstSaProject.model.ShoppingCart;
-import mum.edu.sa.FirstSaProject.service.OrderService;
+import mum.edu.sa.FirstSaProject.shopping.component.dao.ShoppingCartRepository;
+import mum.edu.sa.FirstSaProject.shopping.component.model.OrderLine;
+import mum.edu.sa.FirstSaProject.shopping.component.model.Product;
+import mum.edu.sa.FirstSaProject.shopping.component.model.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ShoppingCartService {
@@ -14,17 +19,31 @@ public class ShoppingCartService {
     private ShoppingCartRepository shoppingCartRepository;
 
     @Autowired
-    private OrderService orderService;
+    @Qualifier("shoppingRestemplate")
+    private RestTemplate restTemplate;
+
+
+    @Value("${product.service.resource.url}")
+    private String productServiceResourceUrl;
+
+    @Value("${order.service.resource.url}")
+    private String orderServiceResourceUrl;
 
     public void createShoppingCart(ShoppingCart shoppingCart) {
         shoppingCartRepository.save(shoppingCart);
     }
 
     public void checkout(long cartId) {
+
         ShoppingCart shoppingCart = shoppingCartRepository.findById(cartId);
         shoppingCart.checkout();
+        ResponseEntity<String> response = restTemplate.postForEntity(orderServiceResourceUrl, shoppingCart, String.class);
+        if (response.getStatusCode() != HttpStatus.NO_CONTENT) {
+            return;
+        }
         shoppingCartRepository.save(shoppingCart);
-        orderService.createOrder(cartId, shoppingCart);
+
+
     }
 
     public void addOrderLine(OrderLine orderLine, long cartId) {
@@ -37,4 +56,13 @@ public class ShoppingCartService {
         return shoppingCartRepository.findById(cartId);
     }
 
+    public Product getProductById(long id) {
+        ResponseEntity<Product> response
+                = restTemplate.getForEntity(productServiceResourceUrl + id, Product.class);
+        if (response.getStatusCode() != HttpStatus.OK) {
+            return null;
+        } else {
+            return response.getBody();
+        }
+    }
 }

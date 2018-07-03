@@ -1,4 +1,4 @@
-package mum.edu.sa.FirstSaProject.model;
+package mum.edu.sa.FirstSaProject.order.component.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,6 +15,9 @@ public class Order {
     private String status;
     private boolean confirm;
     private List<OrderLine> orderLineList;
+    private Customer customer;
+    private Address address;
+    private CreditCard creditCard;
 
     public Order() {
         orderLineList = new ArrayList<>();
@@ -27,10 +30,6 @@ public class Order {
 
     public long getOrderNumber() {
         return orderNumber;
-    }
-
-    public void setOrderNumber(long orderNumber) {
-        this.orderNumber = orderNumber;
     }
 
     public Date getDate() {
@@ -55,5 +54,37 @@ public class Order {
 
     public void setConfirm(boolean confirm) {
         this.confirm = confirm;
+    }
+
+    public void setOrderNumber(long orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<OrderLine> getOrderLineList(){
+        return orderLineList;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public CreditCard getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
     }
 }

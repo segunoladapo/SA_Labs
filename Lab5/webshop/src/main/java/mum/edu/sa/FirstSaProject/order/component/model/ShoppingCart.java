@@ -1,20 +1,16 @@
-package mum.edu.sa.FirstSaProject.model;
+package mum.edu.sa.FirstSaProject.order.component.model;
 
-import com.sun.javafx.UnmodifiableArrayList;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
-@Document(collection = "shoppingCart")
 public class ShoppingCart {
     @Id
     private long id;
     private List<OrderLine> orderLines;
-    private boolean isCheckedOut;
 
     public ShoppingCart() {
         orderLines = new ArrayList<>();
@@ -32,13 +28,6 @@ public class ShoppingCart {
         orderLines.remove(orderLine);
     }
 
-    public synchronized void checkout() {
-        isCheckedOut = true;
-    }
-
-    public boolean isCheckedOut() {
-        return isCheckedOut;
-    }
 
     public long getId() {
         return id;

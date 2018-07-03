@@ -4,6 +4,7 @@ import mum.edu.sa.FirstSaProject.product.component.event.AddProductEvent;
 import mum.edu.sa.FirstSaProject.product.component.listener.ProductListener;
 import mum.edu.sa.FirstSaProject.product.component.model.Product;
 import mum.edu.sa.FirstSaProject.product.component.model.Review;
+import mum.edu.sa.FirstSaProject.product.component.model.Stock;
 import mum.edu.sa.FirstSaProject.product.component.model.Supplier;
 import mum.edu.sa.FirstSaProject.product.component.service.ProductCatalogService;
 import mum.edu.sa.FirstSaProject.product.component.service.SupplierService;
@@ -71,6 +72,18 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         product.addReview(review);
+        productCatalogService.updateProduct(product);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{productNo}/stock")
+    public ResponseEntity<?> setProductStock(@RequestBody Stock stock,
+                                         @PathVariable("productNo") long productNo) {
+        Product product = productCatalogService.getProduct(productNo);
+        if (product == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        product.setStock(stock);
         productCatalogService.updateProduct(product);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

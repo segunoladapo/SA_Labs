@@ -26,10 +26,18 @@ public class CustomerController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findCustomerById(@PathVariable("id") long id) {
+        Optional<Customer> customer = customerService.findCustomerById(id);
+        if (customer.isPresent()) {
+            return new ResponseEntity<>(customer.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
     @PutMapping("account/{customerId}")
     public ResponseEntity<?> addAccount(@RequestBody Account account,
-                                         @PathVariable("customerId") long customerId) {
+                                        @PathVariable("customerId") long customerId) {
         Optional<Customer> customerOptional = customerService.findCustomerById(customerId);
         if (!customerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -43,7 +51,7 @@ public class CustomerController {
 
     @PutMapping("creditcard/{customerId}")
     public ResponseEntity<?> addCreditCart(@RequestBody CreditCard creditCard,
-                                        @PathVariable("customerId") long customerId) {
+                                           @PathVariable("customerId") long customerId) {
         Optional<Customer> customerOptional = customerService.findCustomerById(customerId);
         if (!customerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -54,5 +62,3 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-
-
