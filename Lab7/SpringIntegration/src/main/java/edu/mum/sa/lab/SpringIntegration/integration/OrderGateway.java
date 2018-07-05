@@ -8,5 +8,5 @@ import org.springframework.messaging.Message;
 @MessagingGateway
 public interface OrderGateway {
     @Gateway(requestChannel = "inputChannel")
-    Order handleRequest(Order order);
+    void handleRequest(Order order);
 }
