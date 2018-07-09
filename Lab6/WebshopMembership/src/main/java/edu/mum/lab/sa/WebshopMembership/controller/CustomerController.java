@@ -1,9 +1,9 @@
 package edu.mum.lab.sa.WebshopMembership.controller;
 
-import mum.edu.sa.FirstSaProject.membership.component.model.Account;
-import mum.edu.sa.FirstSaProject.membership.component.model.CreditCard;
-import mum.edu.sa.FirstSaProject.membership.component.model.Customer;
-import mum.edu.sa.FirstSaProject.membership.component.service.CustomerService;
+import edu.mum.lab.sa.WebshopMembership.model.Account;
+import edu.mum.lab.sa.WebshopMembership.model.CreditCard;
+import edu.mum.lab.sa.WebshopMembership.model.Customer;
+import edu.mum.lab.sa.WebshopMembership.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

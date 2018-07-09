@@ -1,7 +1,7 @@
 package edu.mum.lab.sa.WebshopMembership.service;
 
-import mum.edu.sa.FirstSaProject.membership.component.dao.CustomerRepository;
-import mum.edu.sa.FirstSaProject.membership.component.model.Customer;
+import edu.mum.lab.sa.WebshopMembership.dao.CustomerRepository;
+import edu.mum.lab.sa.WebshopMembership.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
