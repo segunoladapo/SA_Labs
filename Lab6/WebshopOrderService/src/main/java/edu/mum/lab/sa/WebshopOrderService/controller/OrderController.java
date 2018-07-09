@@ -40,11 +40,7 @@ public class OrderController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         orderService.confirmOrder(order, customer, creditCard);
-        List<Product> products = order.getOrderLineList()
-                .stream()
-                .map(e -> e.getProduct())
-                .collect(Collectors.toList());
-        publisher.publishEvent(new AddProductEvent(products));
+        publisher.publishEvent(new AddProductEvent(order.getOrderLineList()));
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
