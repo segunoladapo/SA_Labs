@@ -1,13 +1,12 @@
 package edu.mum.lab.sa.WebshopProductService.controller;
 
-import mum.edu.sa.FirstSaProject.product.component.event.AddProductEvent;
-import mum.edu.sa.FirstSaProject.product.component.listener.ProductListener;
-import mum.edu.sa.FirstSaProject.product.component.model.Product;
-import mum.edu.sa.FirstSaProject.product.component.model.Review;
-import mum.edu.sa.FirstSaProject.product.component.model.Stock;
-import mum.edu.sa.FirstSaProject.product.component.model.Supplier;
-import mum.edu.sa.FirstSaProject.product.component.service.ProductCatalogService;
-import mum.edu.sa.FirstSaProject.product.component.service.SupplierService;
+import edu.mum.lab.sa.WebshopProductService.event.AddProductEvent;
+import edu.mum.lab.sa.WebshopProductService.model.Product;
+import edu.mum.lab.sa.WebshopProductService.model.Review;
+import edu.mum.lab.sa.WebshopProductService.model.Stock;
+import edu.mum.lab.sa.WebshopProductService.model.Supplier;
+import edu.mum.lab.sa.WebshopProductService.service.ProductCatalogService;
+import edu.mum.lab.sa.WebshopProductService.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -26,8 +25,7 @@ public class ProductController {
     @Autowired
     private SupplierService supplierService;
 
-    @Autowired
-    private ProductListener productListener;
+
 
     @Autowired
     private ApplicationEventPublisher publisher;

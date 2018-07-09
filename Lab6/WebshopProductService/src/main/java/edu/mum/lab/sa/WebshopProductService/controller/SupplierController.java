@@ -1,8 +1,8 @@
 package edu.mum.lab.sa.WebshopProductService.controller;
 
 
-import mum.edu.sa.FirstSaProject.product.component.model.Supplier;
-import mum.edu.sa.FirstSaProject.product.component.service.SupplierService;
+import edu.mum.lab.sa.WebshopProductService.model.Supplier;
+import edu.mum.lab.sa.WebshopProductService.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

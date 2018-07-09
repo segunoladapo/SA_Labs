@@ -1,8 +1,7 @@
 package edu.mum.lab.sa.WebshopProductService.service;
 
-
-import mum.edu.sa.FirstSaProject.product.component.dao.SupplierRepository;
-import mum.edu.sa.FirstSaProject.product.component.model.Supplier;
+import edu.mum.lab.sa.WebshopProductService.dao.SupplierRepository;
+import edu.mum.lab.sa.WebshopProductService.model.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
