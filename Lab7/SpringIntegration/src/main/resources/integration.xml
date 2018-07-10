@@ -13,10 +13,10 @@
 
     <publish-subscribe-channel  id="inputChannel"/>
 
-    <service-activator input-channel="orderReceiveService"
+    <service-activator input-channel="inputChannel"
                        ref="shippingService"
                        method="processOrder"/>
-    <service-activator input-channel="orderReceiveService"
+    <service-activator input-channel="inputChannel"
                        ref="wareHouseService"
                        method="processOrder"/>
 
