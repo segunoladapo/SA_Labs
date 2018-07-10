@@ -19,6 +19,6 @@ public class JmsSender {
     }
 
     public void sendOrderedProductsToQueue(List<OrderLine> orderLines) {
-        orderLines.forEach(orderLine -> jmsTemplate.convertAndSend("orderedProductQueue", orderLine));
+      jmsTemplate.convertAndSend("orderedProductQueue", orderLines);
     }
 }

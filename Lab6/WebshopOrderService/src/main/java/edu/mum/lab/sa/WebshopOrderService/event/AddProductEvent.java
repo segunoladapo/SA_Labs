@@ -10,11 +10,11 @@ import java.util.List;
 public class AddProductEvent {
 
     public AddProductEvent(List<OrderLine> orderLines){
-        this.OrderLines = OrderLines;
+        this.OrderLines = orderLines;
     }
 
     private List<OrderLine> OrderLines;
-    public List<OrderLine> getProducts(){
-        return Collections.unmodifiableList(OrderLines);
+    public List<OrderLine> getOrderLines(){
+        return OrderLines;
     }
 }

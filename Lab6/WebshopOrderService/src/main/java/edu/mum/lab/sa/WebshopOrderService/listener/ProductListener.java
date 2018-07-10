@@ -18,6 +18,6 @@ public class ProductListener {
     @Async
     @EventListener
     public void onEvent(AddProductEvent event){
-      jmsSender.sendOrderedProductsToQueue(event.getProducts());
+      jmsSender.sendOrderedProductsToQueue(event.getOrderLines());
     }
 }
