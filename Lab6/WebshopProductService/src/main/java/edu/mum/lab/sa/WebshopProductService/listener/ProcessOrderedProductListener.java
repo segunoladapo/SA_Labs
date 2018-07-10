@@ -26,10 +26,4 @@ public class ProcessOrderedProductListener {
        });
     }
 
-    public static void main(String[] args){
-      int i;
-      do{
-          i++;
-      }while (i<0);
-    }
 }
